@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - env:
-        GITHUB_HEAD_REF: ${{ github.head_ref }}
-        GITHUB_BASE_REF: ${{ github.base_ref }}
-      - run: .github/scripts/changelog-check "$GITHUB_HEAD_REF" "$GITHUB_BASE_REF"
+        env:
+          GITHUB_HEAD_REF: ${{ github.head_ref }}
+          GITHUB_BASE_REF: ${{ github.base_ref }}
+        run: .github/scripts/changelog-check "$GITHUB_HEAD_REF" "$GITHUB_BASE_REF"
