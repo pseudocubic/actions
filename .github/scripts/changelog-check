@@ -1,0 +1,14 @@
+#!/bin/sh
+
+RET=1
+
+for i in $(git rev-list "$1".."$2")
+do
+    printf "Checking $i for CHANGELOG changes"
+    if git log --name-only --oneline --pretty="format:" $i | grep -qsE "CHANGELOG.md"
+    then
+        RET=0
+    fi
+done
+
+exit $RET

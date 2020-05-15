@@ -1,0 +1,10 @@
+name: changelog-check
+on: pull_request
+
+jobs:
+  changelog-check:
+    name: Changelog Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@V2
+      - run: .github/scripts/changelog-check "$GITHUB_SHA" "$GITHUB_REF"
