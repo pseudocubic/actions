@@ -2,8 +2,8 @@
 
 RET=1
 
-printf "Checking $i for CHANGELOG changes"
-if git log --name-only --oneline --pretty="format:" HEAD..."$1" | grep -qsE "CHANGELOG.md"
+printf "Checking for CHANGELOG changes"
+if git log --name-only --oneline --pretty="format:" "$1"..."$2" | grep -q "CHANGELOG.md"
 then
     RET=0
 else
