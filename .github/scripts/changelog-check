@@ -2,17 +2,12 @@
 
 RET=1
 
-for i in $(git rev-list "$1"..."$2")
-do
-    printf "Checking $i for CHANGELOG changes"
-    if git log --name-only --oneline --pretty="format:" $i | grep -qsE "CHANGELOG.md"
-    then
-        RET=0
-    else
-        printf "no changelog update in $i"
-    fi
-done
-
-echo $RET
+printf "Checking $i for CHANGELOG changes"
+if git log --name-only --oneline --pretty="format:" HEAD..."$1" | grep -qsE "CHANGELOG.md"
+then
+    RET=0
+else
+    printf "missing changelog update"
+fi
 
 exit $RET
