@@ -8,7 +8,11 @@ do
     if git log --name-only --oneline --pretty="format:" $i | grep -qsE "CHANGELOG.md"
     then
         RET=0
+    else
+        printf "no changelog update in $i"
     fi
 done
+
+echo $RET
 
 exit $RET
