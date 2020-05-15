@@ -10,6 +10,5 @@ jobs:
         uses: actions/checkout@v2
       - name: Check changelog modified
         env:
-          GITHUB_HEAD_REF: ${{ github['head_ref'] }}
           GITHUB_BASE_REF: ${{ github['base_ref'] }}
-        run: .github/scripts/changelog-check "origin/$GITHUB_HEAD_REF" "origin/$GITHUB_BASE_REF"
+        run: .github/scripts/changelog-check "${GITHUB_SHA}" "$GITHUB_BASE_REF"
