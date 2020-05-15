@@ -8,6 +8,6 @@ jobs:
     steps:
       - name: Check changelog modified
         env:
-          GITHUB_HEAD_REF: ${{ github.head_ref }}
-          GITHUB_BASE_REF: ${{ github.base_ref }}
+          GITHUB_HEAD_REF: ${{ github['head_ref'] }}
+          GITHUB_BASE_REF: ${{ github['base_ref'] }}
         run: echo "$GITHUB_HEAD_REF...$GITHUB_BASE_REF"
