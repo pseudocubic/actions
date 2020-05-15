@@ -7,8 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: git log
-      - run: git branch
+      - run: echo ${git log --prety=short}
+      - run: echo ${git branch -a}
       - name: Check changelog modified
         env:
           GITHUB_BASE_REF: ${{ github['base_ref'] }}
