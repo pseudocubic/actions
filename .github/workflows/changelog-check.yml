@@ -6,8 +6,8 @@ jobs:
     name: Changelog Check
     runs-on: ubuntu-latest
     steps:
-      - name: "Check changelog modified"
+      - name: Check changelog modified
         env:
           GITHUB_HEAD_REF: ${{ github.head_ref }}
           GITHUB_BASE_REF: ${{ github.base_ref }}
-        run: .github/scripts/changelog-check "$GITHUB_HEAD_REF" "$GITHUB_BASE_REF"
+        run: echo "$GITHUB_HEAD_REF...$GITHUB_BASE_REF"
