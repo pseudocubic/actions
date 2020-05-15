@@ -11,4 +11,4 @@ jobs:
       - name: Check changelog modified
         env:
           GITHUB_BASE_REF: ${{ github['base_ref'] }}
-        run: .github/scripts/changelog-check "${GITHUB_SHA}" "$GITHUB_BASE_REF"
+        run: .github/scripts/changelog-check "${GITHUB_SHA}" "origin/$GITHUB_BASE_REF"
