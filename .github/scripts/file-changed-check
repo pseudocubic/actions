@@ -1,0 +1,14 @@
+#!/bin/sh
+
+RET=1
+
+git log --name-only "$1"
+
+if git log --name-only --oneline --pretty="format:" "$1" | grep -qs "$2"
+then
+    RET=0
+else
+    printf "missing changelog update"
+fi
+
+exit $RET
