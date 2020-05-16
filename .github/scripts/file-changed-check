@@ -1,14 +1,13 @@
 #!/bin/sh
 
-RET=1
-
-git log --name-only "origin/$1"..."origin/$2"
+echo "file changes between head_ref and base_ref"
+git log --name-only --oneline --pretty="format:" "origin/$1"..."origin/$2"
 
 if git log --name-only --oneline --pretty="format:" "origin/$1"..."origin/$2" | grep -qs "$3"
 then
-    RET=0
+    echo "file changes meeting pattern $3 detected!"
+    exit 0
 else
-    printf "missing changelog update"
+    echo "file changes meeting pattern $3 NOT detected"
+    exit 1
 fi
-
-exit $RET
