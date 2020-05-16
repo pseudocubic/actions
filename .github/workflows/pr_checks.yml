@@ -7,16 +7,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: ./github/scripts/file-changed-check "${GITHUB_SHA}" "CHANGELOG\.md"
+      - run: .github/scripts/file-changed-check "${GITHUB_SHA}" "CHANGELOG\.md"
   unit-tests-updated:
     name: Unit tests updated
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: ./github/scripts/file-changed-check "${GITHUB_SHA}" "test/[a-z]+\.jl"
+      - run: .github/scripts/file-changed-check "${GITHUB_SHA}" "test/[a-z]+\.jl"
   docs-updated:
     name: Documentation updated
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: ./github/scripts/file-changed-check "${GITHUB_SHA}" "docs/[a-z]+\.jl"
+      - run: .github/scripts/file-changed-check "${GITHUB_SHA}" "docs/[a-z]+\.jl"
