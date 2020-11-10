@@ -1,20 +1,15 @@
-name: CheckChangelog
+name: "Check Changelog"
 on:
   pull_request:
-    types: [assigned, opened, synchronize, reopened, labeled, unlabeled]
-    branches:
-      - master
-      - '*-rc'
+      types: [opened, synchronize, reopened, ready_for_review, labeled, unlabeled]
+
 jobs:
-  build:
-    name: Check Actions
+  # Enforces the update of a changelog file on every pull request
+  changelog:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - name: Changelog check
-        uses: Zomzog/changelog-checker@v1.1.0
-        with:
-          fileName: CHANGELOG.md # default `CHANGELOG.adoc`
-          noChangelogLabel: no changelog
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - uses: actions/checkout@v2
+    - uses: dangoslen/changelog-enforcer@v1.4.0
+      with:
+        changeLogPath: 'CHANGELOG.md'
+        skipLabel: 'no changelog'
